@@ -1,4 +1,5 @@
 # importe les modules importants
+from pyexpat.errors import messages
 import hug
 import pronotepy
 import datetime
@@ -175,3 +176,32 @@ def news(url, username, password, ent):
         newsAllData.append(newsData)
 
     return newsAllData;
+
+@hug.get('/discussions')
+def discussions(url, username, password, ent):
+    client = pronotepy.Client(url, username=username, password=password, ent=getattr(pronotepy.ent, ent))
+    allDiscussions = client.discussions()
+
+    discussionsAllData = []
+    for discussion in allDiscussions:
+        messages = []
+        for message in discussion.messages:
+            messages.append({
+                "id": message.id,
+                "content": message.content,
+                "author": message.author,
+                "date": message.date.strftime("%Y-%m-%d %H:%M"),
+                "seen": message.seen,
+            })
+
+        discussionData = {
+            "id": discussion.id,
+            "subject": discussion.subject,
+            "creator": discussion.creator,
+            "date": discussion.creation_date.strftime("%Y-%m-%d %H:%M"),
+            "messages": messages
+        }
+
+        discussionsAllData.append(discussionData)
+
+    return discussionsAllData;
