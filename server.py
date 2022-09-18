@@ -153,3 +153,25 @@ def grades(url, username, password, ent):
         absencesData.append(absenceData)
 
     return absencesData;
+
+@hug.get('/news')
+def news(url, username, password, ent):
+    client = pronotepy.Client(url, username=username, password=password, ent=getattr(pronotepy.ent, ent))
+    allNews = client.information_and_surveys()
+
+    newsAllData = []
+    for news in allNews:
+        newsData = {
+            "id": news.id,
+            "title": news.title,
+            "date": news.creation_date.strftime("%Y-%m-%d %H:%M"),
+            "category": news.category,
+            "survey": news.survey,
+            "author": news.author,
+            "content": news.content,
+            "html_content": news._raw_content
+        }
+
+        newsAllData.append(newsData)
+
+    return newsAllData;
