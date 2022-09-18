@@ -15,7 +15,6 @@ Le but est de l'intégrer le plus vite possible dans [Papillon](https://github.c
 - [x] Actualités **(ne contient pas les pièces jointes)**
 - [x] Absences et retards **(n'a pas l'air de fonctionner)**
 - [ ] Messagerie
-<<<<<<< HEAD
 
 ## Requêtes
 Toutes les requètes doivent **au moins** contenir les 4 paramètres suivants :
@@ -36,5 +35,3 @@ Voici la liste des URLs pour obtenir des données :
 | `/grades` | Affiche les notes |  |
 | `/absences` | Affiche les absences |  |
 | `/news` | Affiche les actualités |  |
-=======
->>>>>>> 16f91fdca5e5b40efbc97f5e4c30b5001195136d
