@@ -10,7 +10,7 @@ Le but est de l'intégrer le plus vite possible dans [Papillon](https://github.c
 - [x] Données de l'utilisateur
 - [x] Emploi du temps
 - [x] Travail à faire
-- [ ] Notes
+- [x] Notes
 - [ ] Compétences
 - [ ] Fichiers
 - [ ] Actualités

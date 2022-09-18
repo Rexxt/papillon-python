@@ -83,3 +83,30 @@ def homework(url, username, password, ent, dateFrom, dateTo):
 
         print(homeworksData)
         return homeworksData
+
+## renvoie les notes
+@hug.get('/grades')
+def grades(url, username, password, ent):
+    client = pronotepy.Client(url, username=username, password=password, ent=getattr(pronotepy.ent, ent))
+    allGrades = client.current_period.grades
+
+    gradesData = []
+    for grade in allGrades:
+        gradeData = {
+            "id": grade.id,
+            "subject": grade.subject.name,
+            "comments": grade.comments,
+            "date": grade.date.strftime("%Y-%m-%d %H:%M"),
+            "grade": {
+                "value": grade.grade,
+                "out_of": grade.out_of,
+                "coefficient": grade.coefficient,
+                "average": grade.average,
+                "max": grade.max,
+                "min": grade.min,
+            }
+        }
+
+        gradesData.append(gradeData)
+
+    return gradesData;
