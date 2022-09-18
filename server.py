@@ -132,3 +132,24 @@ def grades(url, username, password, ent):
     }
 
     return gradesData;
+
+## renvoie les absences (NE FONCTIONNE PAS)
+@hug.get('/absences')
+def grades(url, username, password, ent):
+    client = pronotepy.Client(url, username=username, password=password, ent=getattr(pronotepy.ent, ent))
+    allAbsences = client.current_period.absences
+
+    absencesData = []
+    for absence in allAbsences:
+        absenceData = {
+            "id": absence.id,
+            "from": absence.from_date.strftime("%Y-%m-%d %H:%M"),
+            "to": absence.to_date.strftime("%Y-%m-%d %H:%M"),
+            "justified": absence.justified,
+            "hours": absence.hours,
+            "reasons": absence.reasons,
+        }
+
+        absencesData.append(absenceData)
+
+    return absencesData;
