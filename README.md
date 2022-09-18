@@ -13,6 +13,26 @@ Le but est de l'intégrer le plus vite possible dans [Papillon](https://github.c
 - [x] Notes **(pas testé)**
 - [ ] Compétences
 - [ ] Fichiers
-- [ ] Actualités
+- [x] Actualités **(ne contient pas les pièces jointes)**
 - [x] Absences et retards **(n'a pas l'air de fonctionner)**
 - [ ] Messagerie
+
+## Requêtes
+Toutes les requètes doivent **au moins** contenir les 4 paramètres suivants :
+| Paramètre | Utilité | Exemple |
+|--|--|--|
+| `url` | URL vers l'instance pronote **(avec le eleve.html)** | `https://0152054e.index-education.net/pronote/eleve.html` |
+| `username` | Nom d'utilisateur **PRONOTE** | `l.martin` |
+| `password` | Mot de passe en clair | `azertyuiop12345` |
+| `ent` | Nom de l'ENT tel que listé [ici](https://github.com/bain3/pronotepy/blob/master/pronotepy/ent/ent.py) | `ac_rennes` |
+
+Voici la liste des URLs pour obtenir des données :
+
+| URL | Utilité | Paramètres |
+|--|--|--|
+| `/user` | Obtient les infos sur l'utilisateur (nom, classe...) |  |
+| `/timetable` | Affiche l'emploi du temps sur une date donnée | `dateString` : date au format **`année-mois-jour`** |
+| `/homework` | Affiche les devoirs entre deux dates données | `dateFrom` : date de début au format **`année-mois-jour`**, et `dateTo` date de fin au même format |
+| `/grades` | Affiche les notes |  |
+| `/absences` | Affiche les absences |  |
+| `/news` | Affiche les actualités |  |
