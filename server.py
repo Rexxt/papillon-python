@@ -82,7 +82,6 @@ def homework(url, username, password, ent, dateFrom, dateTo):
             }
             homeworksData.append(homeworkData)
 
-        print(homeworksData)
         return homeworksData
 
 ## renvoie les notes
@@ -213,4 +212,21 @@ def export_ical(url, username, password, ent):
     ical_url = client.export_ical()
     return ical_url
 
+@hug.get('/homework/setAsDone')
+def homework_setAsDone(url, username, password, ent, dateFrom, dateTo, homeworkId):
+    dateFrom = datetime.datetime.strptime(dateFrom, "%Y-%m-%d").date()
+    dateTo = datetime.datetime.strptime(dateTo, "%Y-%m-%d").date()
+    client = pronotepy.Client(url, username=username, password=password, ent=getattr(pronotepy.ent, ent))
+
+    if client.logged_in:
+        homeworks = client.homework(date_from=dateFrom, date_to=dateTo)
+
+        incr = 0
+
+        for homework in homeworks:
+            if incr == homeworkId:
+                print(homework)
+                homework.set_done(False)
+
+            incr += 1
     

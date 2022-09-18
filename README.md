@@ -40,4 +40,5 @@ Voici la liste des URLs pour obtenir des données :
 Voici la liste des URL qui éffectuent une simple fonction
 | URL | Utilité | Paramètres | Réponse
 |--|--|--|--|
-| `/user` | Obtient les infos sur l'utilisateur (nom, classe...) |  |  |
+| `/export/ical` | Exporte le calendrier en iCal |  | *(l'url du fichier iCal)* |
+| `/homework/setAsDone` **(ne fonctionne pas)** | Change l'état d'un devoir (fait/non fait) | `dateFrom` : date de début au format **`année-mois-jour`**, et `dateTo` date de fin au même format, et `homeworkId` l'id du devoir à changer | *(état du devoir changé)* |
