@@ -95,7 +95,6 @@ def grades(url, username, password, ent):
         gradeData = {
             "id": grade.id,
             "subject": grade.subject.name,
-            "comments": grade.comments,
             "date": grade.date.strftime("%Y-%m-%d %H:%M"),
             "grade": {
                 "value": grade.grade,
@@ -107,17 +106,16 @@ def grades(url, username, password, ent):
             }
         }
 
-        gradesData.append(gradeReturn)
+        gradesData.append(gradeData)
 
     averagesData = []
 
     allAverages = client.current_period.averages
     for average in allAverages:
         averageData = {
-            "id": average.id,
             "subject": average.subject.name,
             "average": average.student,
-            "class_average": average.class_averages,
+            "class_average": average.class_average,
             "max": average.max,
             "min": average.min,
             "out_of": average.out_of,
@@ -131,7 +129,7 @@ def grades(url, username, password, ent):
         "overall_average": client.current_period.overall_average,
     }
 
-    return gradesData;
+    return gradeReturn;
 
 ## renvoie les absences (NE FONCTIONNE PAS)
 @hug.get('/absences')
