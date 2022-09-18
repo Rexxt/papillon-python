@@ -35,3 +35,4 @@ Voici la liste des URLs pour obtenir des données :
 | `/grades` | Affiche les notes |  |
 | `/absences` | Affiche les absences |  |
 | `/news` | Affiche les actualités |  |
+| `/messagerie` | Affiche les messages |  |
