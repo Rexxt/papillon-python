@@ -107,11 +107,28 @@ def grades(url, username, password, ent):
             }
         }
 
-        gradeReturn = {
-            "grades": gradeData,
-            "overall_average": client.current_period.overall_average,
+        gradesData.append(gradeReturn)
+
+    averagesData = []
+
+    allAverages = client.current_period.averages
+    for average in allAverages:
+        averageData = {
+            "id": average.id,
+            "subject": average.subject.name,
+            "average": average.student,
+            "class_average": average.class_averages,
+            "max": average.max,
+            "min": average.min,
+            "out_of": average.out_of,
         }
 
-        gradesData.append(gradeReturn)
+        averagesData.append(averageData)
+
+    gradeReturn = {
+        "grades": gradesData,
+        "averages": averagesData,
+        "overall_average": client.current_period.overall_average,
+    }
 
     return gradesData;
