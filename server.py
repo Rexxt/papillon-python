@@ -107,6 +107,11 @@ def grades(url, username, password, ent):
             }
         }
 
-        gradesData.append(gradeData)
+        gradeReturn = {
+            "grades": gradeData,
+            "overall_average": client.current_period.overall_average,
+        }
+
+        gradesData.append(gradeReturn)
 
     return gradesData;
