@@ -205,3 +205,12 @@ def discussions(url, username, password, ent):
         discussionsAllData.append(discussionData)
 
     return discussionsAllData;
+
+@hug.get('/export/ical')
+def export_ical(url, username, password, ent):
+    client = pronotepy.Client(url, username=username, password=password, ent=getattr(pronotepy.ent, ent))
+    
+    ical_url = client.export_ical()
+    return ical_url
+
+    
