@@ -13,8 +13,8 @@ Le but est de l'intégrer le plus vite possible dans [Papillon](https://github.c
 - [ ] Compétences
 - [ ] Fichiers
 - [x] Actualités **(ne contient pas les pièces jointes)**
-- [x] Absences et retards **(n'a pas l'air de fonctionner)**
-- [x] Messagerie **(ne fonctionne pas)**
+- [x] Absences et retards
+- [x] Messagerie **(n'a pas l'air de fonctionner)**
 
 ## Requêtes
 Toutes les requètes doivent **au moins** contenir les 4 paramètres suivants :
