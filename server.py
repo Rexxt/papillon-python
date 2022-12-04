@@ -161,7 +161,7 @@ def homework(token, dateFrom, dateTo, response):
 
 ## renvoie les notes
 @hug.get('/grades')
-def grades(token, ent, response):
+def grades(token, response):
     success, client = get_client(token)
     if success == 'ok':
         allGrades = client.current_period.grades
